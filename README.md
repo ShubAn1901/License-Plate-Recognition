@@ -22,7 +22,8 @@ We divide our problem into two fundamental parts
 We train our model End-to End, unlike the older approaches and use our large CCPD dataset for it. Both the classification and the box detection loss are used for it. Training the "box detector CNN" too using the classification loss + box detector the  in making the convolutional features more useful in recognition of characters.
 
 ## **Block Diagram**
-
+The Block Digram in straightforward terms is shown below:
+![alt text](https://raw.githubusercontent.com/ShubAn1901/Licence-Plate-Recognition/branch/path/to/LPR_block_diag.png)
 
  ### **Experiments**
  In our quest to achieve better recognition and understand the network better, we conducted quite a few experiments, the most important of which are as mentioned-
