@@ -52,7 +52,8 @@ The Block Digram in straightforward terms is shown below:
 |   |Not training  Box detector in End to End| 90.7%  |Faster training |
 
 Now we show some plots obtained while experimenting:
-- The following is the plot generated for accurracy vs epochs, for the case when RP135 is used (i.e. the 1st, 3rd and 5th convolutional layers are used in the classifer) with ReLU as the activation funtion, with training being performed fully end to end.
+- The following is the plot generated for accurracy vs epochs, for the case when RP135 is used (i.e. the 1st, 3rd and 5th convolutional layers are used in the classifer) with ReLU as the activation funtion, with training being performed fully end to end
+
 ![alt text](https://raw.githubusercontent.com/ShubAn1901/Licence-Plate-Recognition/master/RP135.png)
 
 - Testing the accuracy vs epochs, when varying the cross links/features that go into the digit classifier.
