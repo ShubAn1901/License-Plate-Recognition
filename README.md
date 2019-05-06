@@ -24,7 +24,8 @@ We train our model End-to End, unlike the older approaches and use our large CCP
 ## **Block Diagram**
 The Block Digram in straightforward terms is shown below:
 #![alt text](https://raw.githubusercontent.com/ShubAn1901/Licence-Plate-Recognition/master/LPR_block_diag.png)
-(https://raw.githubusercontent.com/ShubAn1901/Licence-Plate-Recognition/branch/path/to/LPR_block_diag.PNG)
+LPR_block_diag.PNG
+#(https://raw.githubusercontent.com/ShubAn1901/Licence-Plate-Recognition/branch/path/to/LPR_block_diag.PNG)
 
  ### **Experiments**
  In our quest to achieve better recognition and understand the network better, we conducted quite a few experiments, the most important of which are as mentioned-
