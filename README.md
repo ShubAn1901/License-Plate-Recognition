@@ -43,7 +43,7 @@ The Block Digram in straightforward terms is shown below:
 
 | |Experiment|Accuracy|Speed of predictions|
 |---|---|---|---|
-|Activation function |ReLu   | 93.6%  |High   |
+|Activation function |ReLU   | 93.6%  |High   |
 |   |Swish   |94.2%   | Slower  |
 |Features cross linked   |  RP135 |93.6%   |High   |
 |   |  RP5 | 92.3%  |Highest   |
