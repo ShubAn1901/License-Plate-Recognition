@@ -6,14 +6,14 @@
 - opencv 3.2
 
 ## **Dataset**
-We use the CCPD dataset, the largest openly available dataset of licence plate images( more than 250,000 images). It provides a large and varied dataset for testing our network and effectively generalizing the results obtained. Most other licence plate datasets are very small (4000 - 10000 images)and are not adequate to train such an End-to-End network.
+We use the CCPD dataset, the largest openly available dataset of licence plate images (more than 250,000 images). It provides a large and varied dataset for testing our network and effectively generalizing the results obtained. Most other licence plate datasets are very small (4000 - 10000 images) and are not adequate to train such an End-to-End network.
 ## **Approach**
 We divide our problem into two fundamental parts
 - Predicting the bounding boxes with good enough accuracy
 - Recognising the characters of the licence plate
 
 
- A common way of doing these used in many papers is having a separate network, typically like YOLO,SSD or even RCNN to detect licence plates in an image and predict accurate bounding boxes around these. These plate detectors are trained first on large databases like ImageNet and then fine-tuned for detecting boxes. Then, a separate character recognition net is trained on only the bounding boxes extracted from the image.
+ A common way of doing the above, as used in many papers, is having a separate network, typically like YOLO, SSD or even RCNN to detect licence plates in an image and predict accurate bounding boxes around these. These plate detectors are trained first on large databases like ImageNet and then fine-tuned for detecting boxes. Then, a separate character recognition net is trained on only the bounding boxes extracted from the image.
 
  We, instead use an End-to-End training based network to perform both the Box detection, and number plate prediction. We use an architecture called the RPNet, proposed in an ECCV 2018 paper to detect licence plates and recognise their characters. It involves-
  - An equivalent to the old "Box detectors" networks made of 2D convolutional layers, which in addition to detecting the licence plate location also gets useful features for character recognition.
