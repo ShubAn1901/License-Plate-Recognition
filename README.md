@@ -34,7 +34,8 @@ The Block Digram in straightforward terms is shown below:
  ### **Experiments**
  In our quest to achieve better recognition and understand the network better, we conducted quite a few experiments, the most important of which are as mentioned-
  - We could not help but wonder if jointly training both, the detector and the character recogniser layers using the classification loss was really useful? So, we put it to test. We tried training only the recogniser using the classification(cross entropy) loss, keeping the weights of the "box detector" the same duringthis training.
- - Activation functions do matter a lot! To try out something new, we tried using the recently proposed swish activation function- which has been proven to improve accuracy in object detection and recognition.
+ - Activation functions do matter a lot! To try out something new, we tried using the recently proposed swish activation function- which has been proven to improve accuracy in object detection and recognition. We use the Swish function which is actually x multiplied by sigmoid. It's graph is shown below:
+ ![alt text](https://raw.githubusercontent.com/ShubAn1901/Licence-Plate-Recognition/master/swish.png)
  - To see which cross links/features from which layer are the most helpful in recognition, we test out different cross links one at a time.
  - We also try out different combinations of cross-links to see which one gives the best accuracy.
 
@@ -52,16 +53,19 @@ The Block Digram in straightforward terms is shown below:
 
 Now we show some plots obtained while experimenting:
 - The following is the plot generated for accurracy vs epochs, for the case when RP135 is used (i.e. the 1st, 3rd and 5th convolutional layers are used in the classifer) with ReLU as the activation funtion, with training being performed fully end to end.
-![alt text](https://raw.githubusercontent.com/ShubAn1901/Licence-Plate-Recognition/master/RP135.PNG)
+![alt text](https://raw.githubusercontent.com/ShubAn1901/Licence-Plate-Recognition/master/RP135.png)
 
 - Testing the accuracy vs epochs, when varying the cross links/features that go into the digit classifier.
-![alt text](https://raw.githubusercontent.com/ShubAn1901/Licence-Plate-Recognition/master/RP_together.PNG)
+![alt text](https://raw.githubusercontent.com/ShubAn1901/Licence-Plate-Recognition/master/RP_together.png)
 
 -The following is the plot obtained fpr the validation loss and training loss vs epochs, for our best model.
-![alt text](https://raw.githubusercontent.com/ShubAn1901/Licence-Plate-Recognition/master/Loss.PNG)
+![alt text](https://raw.githubusercontent.com/ShubAn1901/Licence-Plate-Recognition/master/Loss.png)
 
 The following few images are the images which are outout from our network:
-
+![alt text](https://raw.githubusercontent.com/ShubAn1901/Licence-Plate-Recognition/master/pic3.jpg)
+![alt text](https://raw.githubusercontent.com/ShubAn1901/Licence-Plate-Recognition/master/pic4.jpg)
+![alt text](https://raw.githubusercontent.com/ShubAn1901/Licence-Plate-Recognition/master/pic5.jpg)
+![alt text](https://raw.githubusercontent.com/ShubAn1901/Licence-Plate-Recognition/master/pic6.jpg)
 
  ## **References**
  Our project is based on the 2018 ECCV paper -
