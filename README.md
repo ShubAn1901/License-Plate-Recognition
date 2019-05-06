@@ -1,5 +1,9 @@
 # Licence-Plate-Recognition
-## **Objectives**
+## **Abstract**
+In the modern world where crimes are increasing at a phenomenal rate we need a strong system to act against the same. We need a system that is able to capture and store the licence plate of a vehicle in case of a crime.
+Our aim is Licence Plate Detection and Recognition. 
+We realized our aim through RPNet. It consists of two parts. First the aobject detection part, which detects the licence plate and forms a bounding box around it. Then we use OCR on these detected licence plates to etract the alphabets and digits on the licence plates. We dessribe our idea in detail in the upcoming 'Approach' section.
+
 ## Dependencies
 - Pytorch 1.1
 - numpy
@@ -7,6 +11,7 @@
 
 ## **Dataset**
 We use the CCPD dataset, the largest openly available dataset of licence plate images (more than 250,000 images). It provides a large and varied dataset for testing our network and effectively generalizing the results obtained. Most other licence plate datasets are very small (4000 - 10000 images) and are not adequate to train such an End-to-End network.
+
 ## **Approach**
 We divide our problem into two fundamental parts
 - Predicting the bounding boxes with good enough accuracy
@@ -15,14 +20,15 @@ We divide our problem into two fundamental parts
 
  A common way of doing the above, as used in many papers, is having a separate network, typically like YOLO, SSD or even RCNN to detect licence plates in an image and predict accurate bounding boxes around these. These plate detectors are trained first on large databases like ImageNet and then fine-tuned for detecting boxes. Then, a separate character recognition net is trained on only the bounding boxes extracted from the image.
 
- We, instead use an End-to-End training based network to perform both the Box detection, and number plate prediction. We use an architecture called the RPNet, proposed in an ECCV 2018 paper to detect licence plates and recognise their characters. It involves-
- - An equivalent to the old "Box detectors" networks made of 2D convolutional layers, which in addition to detecting the licence plate location also gets useful features for character recognition.
- - 7 classifiers for extracting the 7 digits in licence plate. They use cross linkages from various deeper convolutional layers for their prediction, in addition to the usual bounding box coordinates. The cross linkages help in recognition of smaller and bigger plates, which is important in generalizing our results as vehicles may be very near or very far away from the camera.
+ We, instead use an End-to-End training based network to perform both the Box detection, and number plate prediction. We use an architecture called the RPNet, proposed in an ECCV 2018 paper to detect licence plates and recognise their characters. It involves:
+ (i) An equivalent to the old "Box detectors" networks made of 2D convolutional layers, which in addition to detecting the licence plate location also gets useful features for character recognition.
+ (ii) 7 classifiers for extracting the 7 digits in licence plate. They use cross linkages from various deeper convolutional layers for their prediction, in addition to the usual bounding box coordinates. The cross linkages help in recognition of smaller and bigger plates, which is important in generalizing our results as vehicles may be very near or very far away from the camera.
 
 We train our model End-to End, unlike the older approaches and use our large CCPD dataset for it. Both the classification and the box detection loss are used for it. Training the "box detector CNN" too using the classification loss + box detector the  in making the convolutional features more useful in recognition of characters.
 
 ## **Block Diagram**
 The Block Digram in straightforward terms is shown below:
+
 ![alt text](https://raw.githubusercontent.com/ShubAn1901/Licence-Plate-Recognition/master/LPR_block_diag.png)
 
  ### **Experiments**
