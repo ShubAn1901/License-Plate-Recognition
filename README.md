@@ -21,6 +21,9 @@ We divide our problem into two fundamental parts
 
 We train our model End-to End, unlike the older approaches and use our large CCPD dataset for it. Both the classification and the box detection loss are used for it. Training the "box detector CNN" too using the classification loss + box detector the  in making the convolutional features more useful in recognition of characters.
 
+## **Block Diagram**
+
+
  ### **Experiments**
  In our quest to achieve better recognition and understand the network better, we conducted quite a few experiments, the most important of which are as mentioned-
  - We could not help but wonder if jointly training both, the detector and the character recogniser layers using the classification loss was really useful? So, we put it to test. We tried training only the recogniser using the classification(cross entropy) loss, keeping the weights of the "box detector" the same duringthis training.
