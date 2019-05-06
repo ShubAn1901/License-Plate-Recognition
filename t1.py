@@ -188,24 +188,26 @@ class RPLicence(nn.Module):
         myB=self.wR2.module.classifier(conv10)#get the features/predicted box
         s1,s2=conv2.data.size()[2],conv2.data.size()[3]
         var1=Variable(torch.DoubleTensor([[s2,0,0,0],[0,s1,0,0],[0,0,s2,0],[0,0,0,s1]]),requires_grad=False)#can change here
-        s3,s4=conv4.data.size()[2],conv4.data.size()[4]
+        s3,s4=conv4.data.size()[2],conv4.data.size()[3]
         var2=Variable(torch.DoubleTensor([[s4,0,0,0],[0,s3,0,0],[0,0,s4,0],[0,0,0,s3]]))
-        s5,s6=conv6.data.size()[2],conv6.data.size()[4]
+        s5,s6=conv6.data.size()[2],conv6.data.size()[3]
         var3=Variable(torch.DoubleTensor([[s6,0,0,0],[0,s5,0,0],[0,0,s6,0],[0,0,0,s5]]))
         mul1=Variable(torch.DoubleTensor([[1,0,1,0],[0,1,0,1],[-0.5,0,0.5,0],[0,-0.5,0,0.5]]),requires_grad=False)
         #did not get from s1
         myB2=myB.mm(mul1).clamp(min=0,max=1)
+	#myB2 is box corners(diagonal)
         #mm means multiply
         #cross linking features from previous layers
-        roi1 = pool_layer(conv2, boxNew.mm(var1), size=(16, 8))
-        roi2 = pool_layer(conv4, boxNew.mm(var2), size=(16, 8))
-        roi3 = pool_layer(conv6, boxNew.mm(var3), size=(16, 8))
+        roi1 = pool_layer(conv2, myB2.mm(var1), size=(16, 8))
+        roi2 = pool_layer(conv4, myB2.mm(var2), size=(16, 8))
+        roi3 = pool_layer(conv6, myB2.mm(var3), size=(16, 8))
         #roi4 = pool_layer(conv7, boxNew.mm(var1), size=(16, 8))
         #roi5 = pool_layer(_conv3, boxNew.mm(var2), size=(16, 8))
         #roi6 = pool_layer(conv5, boxNew.mm(var3), size=(16, 8))
         rois = torch.cat((roi1, roi2, roi3), 1)
         #flatten
         _rois = rois.view(rois.size(0), -1)
+	#dropout taken =0.2
         out1=self.hid12(func.dropout(func.relu(self.hid11(func.Dropout(_rois,training=self.training)))))
         out2=self.hid22(func.dropout(func.relu(self.hid21(func.Dropout(_rois,training=self.training)))))
         out3=self.hid32(func.dropout(func.relu(self.hid31(func.Dropout(_rois,training=self.training)))))
@@ -220,8 +222,7 @@ resume_file=str(args["resume"])
 #change
 if not resume_file == '999':
     model_conv = RPLicence(polyPoints, classNumber)
-    model_conv.load_state_dict(torch.load(resume_file))
-    model_conv = model_conv.cuda()
+    model_conv.load_state_dict(torch.load(resume_file))#resume
 else:
     model_conv = RPLicence(polyPoints, classNumber, wR2Path)
 for i in resume_file:
