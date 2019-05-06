@@ -61,7 +61,7 @@ Now we show some plots obtained while experimenting:
 -The following is the plot obtained fpr the validation loss and training loss vs epochs, for our best model.
 ![alt text](https://raw.githubusercontent.com/ShubAn1901/Licence-Plate-Recognition/master/Loss.png)
 
-The following few images are the images which are outout from our network:
+-The following few images are the images which are output from our network:
 ![alt text](https://raw.githubusercontent.com/ShubAn1901/Licence-Plate-Recognition/master/pic3.jpg)
 ![alt text](https://raw.githubusercontent.com/ShubAn1901/Licence-Plate-Recognition/master/pic4.jpg)
 ![alt text](https://raw.githubusercontent.com/ShubAn1901/Licence-Plate-Recognition/master/pic5.jpg)
