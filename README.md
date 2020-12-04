@@ -1,8 +1,11 @@
 # Licence-Plate-Recognition
+## **Team Members**
+- [Shubhang Bhatnagar](https://shubhangb97.github.io/)
+- [Aniket Bhatia](https://aniketb21.github.io/)
 ## **Abstract**
 In the modern world where crimes are increasing at a phenomenal rate we need a strong system to act against the same. We need a system that is able to capture and store the licence plate of a vehicle in case of a crime.
 Our aim is Licence Plate Detection and Recognition. 
-We realized our aim through RPNet. It consists of two parts. First the aobject detection part, which detects the licence plate and forms a bounding box around it. Then we use OCR on these detected licence plates to etract the alphabets and digits on the licence plates. This is done end-to-end. We describe our idea in detail in the upcoming 'Approach' section.
+We realized our aim through RPNet. It consists of two parts. First the object detection part, which detects the licence plate and forms a bounding box around it. Then we use OCR on these detected licence plates to extract the alphabets and digits on the licence plates. This is done end-to-end. We describe our idea in detail in the upcoming 'Approach' section.
 
 ## Dependencies
 - Pytorch 1.1
